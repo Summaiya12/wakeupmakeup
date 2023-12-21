@@ -1,0 +1,91 @@
+{% include 'partials/header.html' %}
+<section class="h-100" style="background-color: #ffff;">
+  <div class="container h-100 py-5">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-10">
+        <div class="d-flex justify-content-between align-items-center mb-4 mt-5">
+          <h3 class="fw-normal mb-0 text-black product_taital">Check Out</h3>
+            <hr>
+        </div>
+   <div class="row">
+        <div class="col-md-8">
+            <!-- Display Cart Items -->
+           <h4>Cart Items</h4>
+           {% for item in cart_items %}
+        <div class="card rounded-3 mb-4">
+          <div class="card-body p-4">
+            <div class="row d-flex justify-content-between align-items-center">
+              <div class="col-md-2 col-lg-2 col-xl-2">
+                  <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" style="max-width: 100px; max-height: 100px;" >
+              </div>
+              <div class="col-md-3 col-lg-3 col-xl-3">
+                <p class="lead fw-normal mb-2">{{item.product.name}}</p>
+              </div>
+              <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+
+                <input id="form1" min="0" name="quantity" value="{{ item.quantity }}"
+                  class="form-control text-center" />
+
+              </div>
+
+
+              <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+          {% empty %}
+    <p>Your cart is empty.</p>
+    {% endfor %}
+
+        </div>
+
+        <div class="col-md-4">
+            <!-- Order Summary -->
+             <h4>Order Summary</h4>
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Total Items
+                    <span class="badge badge-primary badge-pill">{{ total_items }}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Total Price
+                    <span class="badge badge-primary badge-pill">Rs : {{ total_price }}</span>
+                </li>
+            </ul>
+
+
+            <!-- Checkout Form (Add more fields as needed) -->
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" class="form-control" name="name" id="name" placeholder="Full Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <textarea class="form-control" name="address" id="address" rows="3" placeholder="Shipping Address" required></textarea>
+                </div>
+                <!-- Add more fields as needed (e.g., payment information) -->
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary">Place Order</button>
+            </form>
+            {% for message in messages %}
+<div class="container-fluid p-0 bg-white mt-3">
+  <div class="alert {{ message.tags }} alert-dismissible alert-warning text-center text-black" role="alert" >
+
+    {{ message }}
+  </div>
+</div>
+{% endfor %}
+        </div>
+    </div>
+
+</div>
+    </div>
+  </div>
+</section>
+
+{% include 'partials/footer.html' %}

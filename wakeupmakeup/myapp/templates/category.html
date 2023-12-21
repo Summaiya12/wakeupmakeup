@@ -1,0 +1,38 @@
+{% include 'partials/header.html' %}
+   <!-- product section start -->
+      <div class="product_section layout_padding">
+         <div class="container">
+            <div class="row">
+               <div class="col-sm-12">
+
+                  <h3 class="product_taital">Our Products</h3>
+
+               </div>
+            </div>
+ <hr>
+            <div class="product_section_2 layout_padding">
+               <div class="row">
+                    {% for prod in product %}
+                  <div class="col-lg-3 col-sm-6">
+                     <div class="product_box">
+                        <h4 class="bursh_text">{{prod.name}}</h4>
+                            <hr>
+                        <img src='/media/{{prod.image}}' class="image_1">
+                          <div class="btn_main">
+                           <div class="buy_bt">
+                              <ul>
+                                 <li class="ml-4"><a href="{% url 'detail' prod.id %}">Find Out The Details</a></li>
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                    {% endfor %}
+
+               </div>
+            </div>
+
+         </div>
+      </div>
+      <!-- product section end -->
+{% include 'partials/footer.html' %}

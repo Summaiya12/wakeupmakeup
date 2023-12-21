@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+
+    <title>Signup</title>
+<style>
+.a1:hover{background-color:#900;}
+.checked {
+  color: orange;
+}
+.card{
+background-color: #525252,
+ border: 2px;
+  width: 400px;
+   border: none
+}
+.p1{color:#FFF;}
+.p1:hover{background-color:#900;}
+    body{
+    background-color: #fff;
+}
+.centered-form{
+	margin-top: 60px;
+}
+
+.centered-form .panel{
+	background: rgba(255, 255, 255, 0.8);
+	box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+}
+
+
+
+.btr {
+    border-top-right-radius: 5px !important
+}
+
+.btl {
+    border-top-left-radius: 5px !important
+}
+
+
+
+.nav-pills {
+    display: table !important;
+    width: 100%
+}
+
+.nav-pills .nav-link {
+    border-radius: 0px;
+    border-bottom: 1px solid #0d6efd40
+}
+
+.nav-item {
+    display: table-cell;
+    background: #0d6efd2e
+}
+
+.form {
+    padding: 10px;
+    height: 430px;
+}
+
+.form input {
+    margin-bottom: 12px;
+    border-radius: 3px
+}
+
+.form input:focus {
+    box-shadow: none
+}
+
+.form button {
+    margin-top: 20px
+}
+.centered-form{
+	margin-top: 60px;
+}
+
+.centered-form .panel{
+	background: rgba(255, 255, 255, 0.8);
+	box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+}
+</style>
+</head>
+<body>
+<div class="d-flex justify-content-center align-items-center mt-5" >
+    <div class="card bg-light border border-secondary">
+    <div class="text-center mt-5">
+      <h2 class="text-center text-black">Sign Up</h2>
+
+                            </div>
+				 {% for message in messages %}
+<div class="container-fluid p-0 bg-white mt-3">
+  <div class="alert {{ message.tags }} alert-dismissible alert-warning text-center text-black" role="alert" >
+
+    {{ message }}
+  </div>
+</div>
+{% endfor %}
+			 			 <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-home" role="tab panel" aria-labelledby="pills-home-tab">
+			    		<form  action="" method="post"  class="form px-4 pt-5">
+							{% csrf_token %}
+
+			                <input type="text"  name="name" id="name" class="form-control border border-secondary "   placeholder="User Name" required>
+
+							<input type="email" name="email" id="email"  class="form-control border border-secondary "  placeholder="Email Address" required>
+
+							<input type="password" name="pass" id="pass" class="form-control border border-secondary "  placeholder="Password" required>
+
+							<input type="password" name="re_pass" id="re_pass" class="form-control border border-secondary "  placeholder="Confirm Password" required>
+
+			    			<input type="submit" value="Register" class="btn  btn-block" style="background-color:#fae1e1">
+							  <button type="button"  class="btn btn-dark btn-block ml-5 mt-3 w-75 text-dark" style="background-color:#fae1e1"><a href="{% url 'login' %}" class=" btn-block text-dark">Already Have Account?</a></button>
+
+			    		</form>
+			    	</div>
+	    		</div>
+    		</div>
+    	</div>
+
+</body>
+</html>
